@@ -4,7 +4,8 @@ import {
   ScrollView,
   View,
 } from 'react-native';
-// import { ErrorBoundary } from '@sentry/react';
+import { Text } from 'react-native-paper';
+import * as Sentry from "@sentry/react";
 import ErrorBoundary from './components/ErrorBoundary';
 import ErrorButton from './components/ErrorButton';
 
@@ -14,14 +15,14 @@ const App = () =>  (
       <ScrollView
         contentInsetAdjustmentBehavior="automatic">
         <View>
-          
-          <ErrorBoundary> 
-           <ErrorButton />
-          </ErrorBoundary>  
 
           <ErrorBoundary> 
            <ErrorButton />
           </ErrorBoundary>  
+
+          <Sentry.ErrorBoundary fallback={<Text>Error from Sentry</Text>}> 
+           <ErrorButton />
+          </Sentry.ErrorBoundary>  
         </View>
       </ScrollView>
     </SafeAreaView>
