@@ -2,22 +2,26 @@ import React from 'react';
 import {
   SafeAreaView,
   ScrollView,
-  StatusBar,
   View,
 } from 'react-native';
-
+// import { ErrorBoundary } from '@sentry/react';
+import ErrorBoundary from './components/ErrorBoundary';
 import ErrorButton from './components/ErrorButton';
 
 
 const App = () =>  (
     <SafeAreaView>
-      <StatusBar
-        barStyle={'dark-content'}
-      />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic">
         <View>
-         <ErrorButton />
+          
+          <ErrorBoundary> 
+           <ErrorButton />
+          </ErrorBoundary>  
+
+          <ErrorBoundary> 
+           <ErrorButton />
+          </ErrorBoundary>  
         </View>
       </ScrollView>
     </SafeAreaView>
